@@ -32,7 +32,5 @@
 		</form>
 	</fieldset>
 
-	<img src="image/engrenage-1024x1024.png"></img>
-
 	</body>
 </html>
