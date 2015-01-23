@@ -1,0 +1,45 @@
+footer#depths {
+    clear: both;
+    color: #D8E4D8;
+    font-size: 8.25pt;
+    margin: 0px;
+    text-align: center;
+    border: 0px none;
+    overflow: hidden;
+	font-family: Verdana,sans-serif;
+}
+#depths {
+    margin: 0px !important;
+}
+#depths {
+    clear: both;
+    padding: 0px;
+    background: none repeat scroll 0% 0% #506256;
+    color: #D8E4D8;
+    font-size: 8.25pt;
+    border-top: 1px solid #E1E9E0;
+    margin: 0px 18px;
+}
+footer#depths .depths-inner {
+    padding: 0px 0px 10px;
+    background: none repeat scroll 0% 0% #506256;
+    border-top: 1px solid #E1E9E0;
+    box-sizing: border-box;
+}
+footer#depths div.footer_copyright {
+    display: inline-block;
+    color: #C4D1C5;
+    margin: 10px 10px 0px;
+}
+footer#depths div.footer_tx_links {
+    display: inline-block;
+    position: relative;
+    color: #A9B1A6;
+    margin: 10px 10px 0px;
+}
+footer#depths a {
+    color: #A9B1A6;
+    text-decoration: none;
+    margin-right: 4px;
+    margin-left: 4px;
+}
