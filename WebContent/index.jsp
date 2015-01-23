@@ -2,12 +2,10 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/style2.css">
-<title>Page d'acceuil</title>
-</head>
+	<%@include file="head.jsp" %>
 <body>
+
+	<%@include file="header.jsp" %>
 
 	<div>
 		<img style="float: left; margin-right: 10px;" src="image/logosite.jpeg" width="500px" height="500px" alt="celui qui lit ça est un con !"></img>
@@ -17,6 +15,13 @@
 	</div>
 
 	<fieldset style="clear:left;">
+		
+		<form action="SRVLTInscription" method="POST">
+			<input name="newLogin" placehorlder="login" />
+			<input name="newPwd" placeholder="Password" />
+			<input type="submit" value="Inscription" />		
+		</form>
+		
 		<legend>Action</legend> 
 		
 		<div>

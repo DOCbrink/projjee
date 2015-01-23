@@ -18,14 +18,12 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	public User(int idUser, String loginUser, String mdpUser) {
-		this.idUser = idUser;
+	public User(String loginUser, String mdpUser) {
 		this.loginUser = loginUser;
 		this.mdpUser = mdpUser;
 	}
 
-	public User(int idUser, String loginUser, String mdpUser, Set<Image> images) {
-		this.idUser = idUser;
+	public User(String loginUser, String mdpUser, Set<Image> images) {
 		this.loginUser = loginUser;
 		this.mdpUser = mdpUser;
 		this.images = images;

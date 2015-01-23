@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 /**
@@ -38,17 +40,35 @@ public class SRVLTConnexion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String login = request.getParameter("login");
+		String pwd = request.getParameter("pwd");
+		
+		HttpSession sessionS = request.getSession();
+		
 		Session session = HibernateTools.currentSession();
 		session.beginTransaction();
 		
-		//try {
+		try {
+			ArrayList<User> userco = (ArrayList<User>)session.createQuery("from User where loginUser='"+login+"' AND mdpUser='"+pwd+"'").list();
+		
+			if (userco.size() == 0)
+				sessionS.setAttribute("statusLogin", "NO_USER");
 			
+			else if (userco.size() == 1)
+			{
+				sessionS.setAttribute("statusLogin", "STATUS_OK");
+				sessionS.setAttribute( "userco", userco.get(0));
+			}
 			
-			//Arraylist<User> arruserco = (ArrayList)session.createQuery("from Image").list();
+			else
+				sessionS.setAttribute("statusLogin", "TOO_MUCH_USER");
 			
-			//objectNotFoundException
-			
-		//}
+		} catch (HibernateException e) {
+			System.out.println("erreur de connexion");
+			sessionS.setAttribute("statusLogin", "ERROR_CONNEXION");
+		}	
+		
+		HibernateTools.closeSession();
 		
 		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
 		req.forward(request, response);
