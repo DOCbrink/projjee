@@ -1,12 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">    
 	<div id="navfixed" class="navbar-menu-inner-scroll hidden">
 		<div style="float:left;">
-			<a class="navbar-menu-item active" href="http://www.deviantart.com/today/">Aujourd'hui</a>
-			<a class="navbar-menu-item" href="http://www.deviantart.com/browse/all/">Parcourir</a>
-			<a class="navbar-menu-item" href="http://www.deviantart.com/browse/whatshot/">What’s Hot</a>
-			<a class="navbar-menu-item" href="http://www.deviantart.com/browse/undiscovered/">Undiscovered</a>
-			<a class="navbar-menu-item" href="http://www.deviantart.com/dailydeviations/">Daily Deviations</a>
+			<a class="navbar-menu-item active" href="">Aujourd'hui</a>
+			<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
+			<a class="navbar-menu-item" href="SRVLTAfficheImage">Give me all !</a>
 		</div>
 		<div class="profilconnected" style="float:right;">
 			<div class="jump-to-top" style="display:inline-block;margin-right:10px;">
@@ -30,7 +29,7 @@
 				<c:choose>
 					<c:when test="${statusLogin == 'STATUS_OK'}">
 						<form class="profilconnected navbar-right navbar-form" method="POST" action="SRVLTDeconnexion">
-							<a style="margin-right:10px;" href="/id/">Identifiant</a>
+							<a style="margin-right:10px;" href="/id/">Connecté(e) en tant que <strong><c:out value="${userco.loginUser}"></c:out></strong></a>
 							<button style="margin-top:3px" type="submit" class="btn btn-success">Déconnexion</button>
 						</form>
 					</c:when>
@@ -51,10 +50,8 @@
 			</div>
         </div>
 		<div id="navbottom" class="navbar-menu-inner-scroll">
-			<a class="navbar-menu-item active" href="http://www.deviantart.com/today/">Aujourd'hui</a>
-			<a class="navbar-menu-item" href="http://www.deviantart.com/browse/all/">Parcourir</a>
-			<a class="navbar-menu-item" href="http://www.deviantart.com/browse/whatshot/">What’s Hot</a>
-			<a class="navbar-menu-item" href="http://www.deviantart.com/browse/undiscovered/">Undiscovered</a>
-			<a class="navbar-menu-item" href="http://www.deviantart.com/dailydeviations/">Daily Deviations</a>
+			<a class="navbar-menu-item active" href="">Aujourd'hui</a>
+			<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
+			<a class="navbar-menu-item" href="SRVLTAfficheImage">Give me all !</a>
 		</div>
-    </nav
+    </nav>

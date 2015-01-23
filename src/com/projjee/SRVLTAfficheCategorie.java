@@ -36,7 +36,16 @@ public class SRVLTAfficheCategorie extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Session session = HibernateTools.currentSession(); 
+		   
+		ArrayList <Categorie> categList = (ArrayList)session.createQuery("from Categorie").list();
+
+		HibernateTools.closeSession();
+		
+		request.setAttribute("categories", categList);
+		
+		RequestDispatcher req = request.getRequestDispatcher("/JSPafficheCategorie.jsp");
+		req.forward(request, response);
 	}
 
 	/**

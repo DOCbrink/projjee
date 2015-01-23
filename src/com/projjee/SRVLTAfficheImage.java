@@ -34,7 +34,19 @@ public class SRVLTAfficheImage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		ArrayList <Image> categImage;
+		
+		System.out.println("Id (get) de la catégorie choisis : all");
+		
+		Session session = HibernateTools.currentSession(); 
+
+		categImage = (ArrayList)session.createQuery("from Image").list();
+		
+		HibernateTools.closeSession();
+		request.setAttribute("images", categImage);/**/
+		
+		RequestDispatcher req = request.getRequestDispatcher("/JSPafficheImage.jsp");
+		req.forward(request, response);
 	}
 
 	/**
@@ -44,7 +56,7 @@ public class SRVLTAfficheImage extends HttpServlet {
 		String idcategorie = request.getParameter("choosenCategorie");
 		ArrayList <Image> categImage;
 		
-		System.out.println("Id de la catégorie choisis : "+idcategorie);
+		System.out.println("Id (post) de la catégorie choisis : "+idcategorie);
 		
 		Session session = HibernateTools.currentSession(); 
 		
