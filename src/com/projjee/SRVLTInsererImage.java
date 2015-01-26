@@ -1,5 +1,6 @@
 package com.projjee;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -18,6 +19,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -133,8 +135,17 @@ public class SRVLTInsererImage extends HttpServlet {
 						nomImage = fieldvalue;
 					else if (fieldname.equals("desc_image"))
 						descImage = fieldvalue;					
-				}				
+				}	
 			}
+			
+			File source = new File("C:\\Users\\lfaviere\\workspace2\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\projjee\\image\\"+urlImage);
+	        File dest = new File("C:\\Users\\lfaviere\\workspace2\\projjee\\WebContent\\image\\"+urlImage);
+	        
+	        try {
+	            FileUtils.copyFile(source, dest);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 			
 			Transaction tx = session.beginTransaction();
 			

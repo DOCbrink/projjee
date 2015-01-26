@@ -27,7 +27,7 @@ public class Image implements java.io.Serializable {
 
 	public Image() {
 	}
-
+	
 	public Image(User user, Categorie categorie, String urlImage,
 			String nomImage, String descriptionImage) {
 		this.idImage = idImage;

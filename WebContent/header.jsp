@@ -6,7 +6,7 @@
 			<a class="navbar-menu-item active" href="">Aujourd'hui</a>
 			<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
 			<a class="navbar-menu-item" href="SRVLTAfficheImage">Give me all !</a>
-			<c:if test="${statusLogin == 'STATUS_OK'}">
+			<c:if test="${statusLogin == 'STATUS_OK'}">				
 				<a class="navbar-menu-item" href="SRVLTAfficheImage">Ajoutez une catégorie !</a>
 				<a class="navbar-menu-item" href="SRVLTAfficheImage">Ajoutez une Image !</a>
 			</c:if>
@@ -27,7 +27,9 @@
 			</div>
 			<div id="navbar">
 				<div class="navbar-left navbar-text">
-					<span id="submit"><a href="#" class="navbar-link">Ajouter une image</a></span>
+					<c:if test="${statusLogin == 'STATUS_OK'}">
+						<span id="submit"><a href="SRVLTLinkToUploadImage" class="navbar-link">Ajouter une image</a></span>
+					</c:if>
 					<span id="shopping"><a href="#" class="navbar-link"><i class="fa fa-shopping-cart"></i>Panier</a></span>
 				</div>
 				
