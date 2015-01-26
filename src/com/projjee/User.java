@@ -1,6 +1,6 @@
 package com.projjee;
 
-// Generated 9 janv. 2015 15:46:21 by Hibernate Tools 3.4.0.CR1
+// Generated 26 janv. 2015 09:15:43 by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,11 +19,13 @@ public class User implements java.io.Serializable {
 	}
 
 	public User(String loginUser, String mdpUser) {
+		this.idUser = idUser;
 		this.loginUser = loginUser;
 		this.mdpUser = mdpUser;
 	}
 
 	public User(String loginUser, String mdpUser, Set<Image> images) {
+		this.idUser = idUser;
 		this.loginUser = loginUser;
 		this.mdpUser = mdpUser;
 		this.images = images;

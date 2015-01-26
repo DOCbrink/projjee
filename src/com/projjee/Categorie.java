@@ -1,6 +1,6 @@
 package com.projjee;
 
-// Generated 9 janv. 2015 15:46:21 by Hibernate Tools 3.4.0.CR1
+// Generated 26 janv. 2015 09:15:43 by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,10 +18,12 @@ public class Categorie implements java.io.Serializable {
 	}
 
 	public Categorie(String nomCategorie) {
+		this.idCategorie = idCategorie;
 		this.nomCategorie = nomCategorie;
 	}
 
 	public Categorie(String nomCategorie, Set<Image> images) {
+		this.idCategorie = idCategorie;
 		this.nomCategorie = nomCategorie;
 		this.images = images;
 	}

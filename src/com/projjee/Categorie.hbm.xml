@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 9 janv. 2015 15:46:21 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 26 janv. 2015 09:15:43 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.projjee.Categorie" table="categorie" catalog="projjee">
         <id name="idCategorie" type="int">
