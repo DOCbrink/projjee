@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Servlet implementation class SRVLTLinkToUploadImage
@@ -31,7 +32,17 @@ public class SRVLTLinkToUploadImage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Session session = HibernateTools.currentSession(); 
+		Transaction tx = session.beginTransaction();
+		   
+		ArrayList <Categorie> categList = (ArrayList)session.createQuery("from Categorie").list();
+
+		HibernateTools.closeSession();
+		
+		request.setAttribute("categories", categList);
+		
+		RequestDispatcher req = request.getRequestDispatcher("/JSPInsererImage.jsp");
+		req.forward(request, response);
 	}
 
 	/**
@@ -39,6 +50,7 @@ public class SRVLTLinkToUploadImage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Session session = HibernateTools.currentSession(); 
+		Transaction tx = session.beginTransaction();
 		   
 		ArrayList <Categorie> categList = (ArrayList)session.createQuery("from Categorie").list();
 

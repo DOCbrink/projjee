@@ -1,0 +1,19 @@
+.message
+{
+	z-index:9999;
+	position:fixed;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	bottom:0;
+	width:500px;
+}
+
+.sucessMessage{
+	border:1px solid green;
+}
+
+.failMessage{
+	border:1px solid red;
+}

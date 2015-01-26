@@ -6,6 +6,11 @@
 			<a class="navbar-menu-item active" href="">Aujourd'hui</a>
 			<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
 			<a class="navbar-menu-item" href="SRVLTAfficheImage">Give me all !</a>
+			<c:if test="${statusLogin == 'STATUS_OK'}">
+				<a class="navbar-menu-item" href="SRVLTAfficheImage">Ajoutez une catégorie !</a>
+				<a class="navbar-menu-item" href="SRVLTAfficheImage">Ajoutez une Image !</a>
+			</c:if>
+			
 		</div>
 		<div class="profilconnected" style="float:right;">
 			<div class="jump-to-top" style="display:inline-block;margin-right:10px;">
@@ -53,5 +58,9 @@
 			<a class="navbar-menu-item active" href="">Aujourd'hui</a>
 			<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
 			<a class="navbar-menu-item" href="SRVLTAfficheImage">Give me all !</a>
+			<c:if test="${statusLogin == 'STATUS_OK'}">
+				<a class="navbar-menu-item" href="SRVLTAfficheImage">Ajoutez une catégorie !</a>
+				<a class="navbar-menu-item" href="SRVLTAfficheImage">Ajoutez une Image !</a>
+			</c:if>
 		</div>
     </nav>

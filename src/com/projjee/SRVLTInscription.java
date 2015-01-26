@@ -54,7 +54,7 @@ public class SRVLTInscription extends HttpServlet {
 			{
 				User newUser = new User(login, pwd);
 				session.save(newUser);
-				request.setAttribute("status", "SUCESS");
+				request.setAttribute("status", "SUCCESS");
 				request.setAttribute("message", "Vous êtes maintenant inscrit ! Bonne viste =)");
 				tx.commit();
 			}
@@ -66,8 +66,9 @@ public class SRVLTInscription extends HttpServlet {
 			}
 			
 		} catch (HibernateException e) {
-			System.out.println("erreur de connexion");
-			request.setAttribute("inscriptionStatus", "ERROR_HIBERNATE");
+			System.out.println("erreur hibernate");
+			request.setAttribute("status", "FAIL");
+			request.setAttribute("message", "erreur d'hibernate ou de BDD");
 		}	
 		
 		HibernateTools.closeSession();

@@ -30,8 +30,17 @@ public class SRVLTDeconnexion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessionS = request.getSession();
-		sessionS.removeAttribute("statusLogin");
-		sessionS.removeAttribute("userco");
+		
+		try {
+			sessionS.removeAttribute("statusLogin");
+			sessionS.removeAttribute("userco");
+			
+			request.setAttribute("status", "SUCCESS");
+			request.setAttribute("message", "Déconnecté(e)");
+		} catch (Exception ex) {
+			request.setAttribute("status", "FAIL");
+			request.setAttribute("message", "La deconnexion à échoué. Contactez un admin.");
+		}
 		
 		RequestDispatcher rqd = request.getRequestDispatcher("/index.jsp");
 		rqd.forward(request, response);
@@ -42,8 +51,17 @@ public class SRVLTDeconnexion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessionS = request.getSession();
-		sessionS.removeAttribute("statusLogin");
-		sessionS.removeAttribute("userco");
+		
+		try {
+			sessionS.removeAttribute("statusLogin");
+			sessionS.removeAttribute("userco");
+			
+			request.setAttribute("status", "SUCCESS");
+			request.setAttribute("message", "Déconnecté(e)");
+		} catch (Exception ex) {
+			request.setAttribute("status", "FAIL");
+			request.setAttribute("message", "La deconnexion à échoué. Contactez un admin.");
+		}
 		
 		RequestDispatcher rqd = request.getRequestDispatcher("/index.jsp");
 		rqd.forward(request, response);

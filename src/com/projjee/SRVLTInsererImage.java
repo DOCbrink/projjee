@@ -29,15 +29,15 @@ import org.hibernate.Transaction;
 public class SRVLTInsererImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private boolean isMultipart;
-	   private String filePath;
-	   private int maxFileSize = 1024 * 1024;
-	   private int maxMemSize = 4 * 1024;
-	   private File file ;
+	private String filePath;
+	private int maxFileSize = 1024 * 1024;
+	private int maxMemSize = 4 * 1024;
+	private File file ;
 
-	   public void init( ){
-	      // Get the file location where it would be stored.
-	      filePath = getServletContext().getInitParameter("file-upload"); 
-	   }
+	public void init( ){
+		// Get the file location where it would be stored.
+		filePath = getServletContext().getInitParameter("file-upload"); 
+	}
        
     /**
      * @see HttpServlet#HttpServlet()
