@@ -29,7 +29,8 @@ public class SRVLTRetourMenuPrincipal extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
+		req.forward(request, response);
 	}
 
 	/**
