@@ -1,15 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 janv. 2015 09:15:43 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 27 janv. 2015 08:31:45 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.projjee.Categorie" table="categorie" catalog="projjee">
         <id name="idCategorie" type="int">
             <column name="ID_CATEGORIE" />
-            <generator class="increment"/>
+            <generator class="increment" />
         </id>
+        <many-to-one name="user" class="com.projjee.User" fetch="select">
+            <column name="ID_USER" not-null="true" />
+        </many-to-one>
         <property name="nomCategorie" type="string">
             <column name="NOM_CATEGORIE" length="767" not-null="true" />
+        </property>
+        <property name="categDateMaj" type="string">
+            <column name="CATEG_DATE_MAJ" length="100" not-null="false" />
+        </property>
+        <property name="categDateAjout" type="string">
+            <column name="CATEG_DATE_AJOUT" length="100" not-null="false" />
         </property>
         <set name="images" table="image" inverse="true" lazy="true" fetch="select">
             <key>

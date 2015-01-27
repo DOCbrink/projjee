@@ -4,8 +4,8 @@ $(document).ready(function() {
 		window.setTimeout(function() { $(".alert").alert('close'); }, 2000);
 
 
-  var navpos = $('.jumbotron').offset();
-  console.log(navpos.top);
+	var navpos = $('.jumbotron').offset();
+	console.log(navpos.top);
     $(window).bind('scroll', function() {
        if ($(window).scrollTop() > navpos.top) {
 		console.log("nope");
@@ -24,3 +24,17 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah')
+                    .attr('src', e.target.result)
+					.attr('class', '')
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}

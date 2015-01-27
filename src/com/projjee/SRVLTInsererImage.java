@@ -17,6 +17,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -60,6 +61,14 @@ public class SRVLTInsererImage extends HttpServlet {
 		String userstatus = (String)sessionS.getAttribute("statusLogin");
 		
 		Session session = HibernateTools.currentSession(); 
+		
+		Transaction tx = session.beginTransaction();
+		
+		Query q = session.createQuery("from Image Order by imageDateAjout DESC");
+		q.setMaxResults(16);
+		ArrayList<Image> imgList = (ArrayList<Image>)q.list();
+
+		request.setAttribute("imgList", imgList);
 		
 		String idcategorie = "null";
 		String nomImage = "Pas de titre";
@@ -130,9 +139,7 @@ public class SRVLTInsererImage extends HttpServlet {
 						urlImage = file.getName();
 						fi_sauv.write( file ) ;
 						
-						//Ajout en BDD
-						Transaction tx = session.beginTransaction();
-						
+						//Ajout en BDD					
 						User user = (User)sessionS.getAttribute("userco");
 						
 						Image tempImg = new Image(user,
@@ -181,10 +188,12 @@ public class SRVLTInsererImage extends HttpServlet {
 				System.out.println(ex);
 				request.setAttribute("status", "FAIL");
 				request.setAttribute("message", "Erreur veuillez recommencer.");
+				
+				tx.rollback();
 			} 
 		}
 		
-		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
+		RequestDispatcher req = request.getRequestDispatcher("/accueil.jsp");
 		req.forward(request, response);
 	}
 }

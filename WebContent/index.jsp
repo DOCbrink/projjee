@@ -2,63 +2,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
 <html>
-
-<%@include file="head.jsp" %>  
-
-<body>
 	
-	<%@include file="message.jsp" %>
-    <%@include file="header.jsp" %>
-	
-    <!-- Main jumbotron for content -->
-    <div class="jumbotron" style="padding-top:0px;">
-		<div class="today-header">
-			<div class="today-date">Vendredi le 1er avril 2022</div>
-		</div>
-		<div class="shinyheader with-sub">
-			<div class="headercontent">
-				<ul class="headerlinks"></ul>
-				<div class="headlines">
-					<h1>C'est chaud, c'est d'actualité :)</h1>
-					<div class="subtitle">Venez decouvrir les dernières images ajoutées.</div>
+	<%@include file="head.jsp" %>  
+
+	<body>
+		
+		<%@include file="header.jsp" %> 
+		
+		<%@include file="message.jsp" %> 
+		
+		<!-- Main jumbotron for content -->
+	    <div class="jumbotron" >
+			<div class="today-header">
+				<div class="today-date">Vendredi le 1er avril 2022</div>
+			</div>
+			<div class="shinyheader with-sub">
+				<div class="headercontent">
+					<ul class="headerlinks"></ul>
+					<div class="headlines">
+						<h1><i class="fa fa-child fa-3"></i> Bienvenue sur JavArt</h1>
+						<div class="subtitle">N'hésitez pas à vous inscrire ci-dessous.</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div>
+			
+			<div id="inscription">
+				<c:choose>
+					<c:when test="${statusLogin == 'STATUS_OK'}">
+						<p>Vous êtes déja connecté(e) <c:out value="${userco.loginUser}"></c:out></p>
+					</c:when>
+					
+					<c:otherwise>
+						<fieldset>
+							<legend>Formulaire d'inscription</legend>
+							<div class="form">
+								<form method="POST" action="SRVLTInscription" method="POST">
+									<div class="form-group">
+										<label for="pseudo">Login</label>
+										<input type="text" class="form-control" id="pseudo" placeholder="Entrez votre pseudo" name="newLogin" required>
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input type="password" class="form-control" id="password" name="newPwd" placeholder="Entrez votre mot de passe" required>
+									</div>
+									<button type="submit" class="btn btn-success">S'inscrire</button>
+								</form>
+							</div>	
+						</fieldset>
+					</c:otherwise>
+				</c:choose>
 
-	
-	
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
-    </div> <!-- /container -->
-  </body>
+				<div id="visit">
+					<a id="bigbutton" href="SRVLTLinkToAccueil" alt="Vers accueil">
+						<span>Ou visiter le site !</span>
+					</a>
+				</div>
+			</div>
+	    </div> <!-- /container -->
+    </body>
 </html>

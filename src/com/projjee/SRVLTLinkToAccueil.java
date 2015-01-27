@@ -9,22 +9,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
- * Servlet implementation class RetourMenuPrincipalSRVLT
+ * Servlet implementation class SRVLTLinkToAccueil
  */
-@WebServlet("/SRVLTRetourMenuPrincipal")
-public class SRVLTRetourMenuPrincipal extends HttpServlet {
+@WebServlet("/SRVLTLinkToAccueil")
+public class SRVLTLinkToAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SRVLTRetourMenuPrincipal() {
+    public SRVLTLinkToAccueil() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,26 +32,26 @@ public class SRVLTRetourMenuPrincipal extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Session session = HibernateTools.currentSession(); 
+		Session session = HibernateTools.currentSession();
 		session.beginTransaction();
 		
 		Query q = session.createQuery("from Image Order by imageDateAjout DESC");
 		q.setMaxResults(16);
 		ArrayList<Image> imgList = (ArrayList<Image>)q.list();
 
-		request.setAttribute("imgList", imgList);
-		
 		HibernateTools.closeSession();
 		
-		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
+		request.setAttribute("imgList", imgList);
+		
+		RequestDispatcher req = request.getRequestDispatcher("/accueil.jsp");
 		req.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		Session session = HibernateTools.currentSession(); 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Session session = HibernateTools.currentSession();
 		session.beginTransaction();
 		
 		Query q = session.createQuery("from Image Order by imageDateAjout DESC");
@@ -63,8 +62,9 @@ public class SRVLTRetourMenuPrincipal extends HttpServlet {
 		
 		HibernateTools.closeSession();
 		
-		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
+		RequestDispatcher req = request.getRequestDispatcher("/accueil.jsp");
 		req.forward(request, response);
+	
 	}
 
 }

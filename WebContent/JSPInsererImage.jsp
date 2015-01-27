@@ -5,56 +5,56 @@
 
 <%@include file="head.jsp" %>  
 
-<body>
+	<body>
 	
-	<%@include file="message.jsp" %>
-    <%@include file="header.jsp" %>
-	
-	<fieldset>
-		<legend>Action</legend> 
-		
-		<div>
-			<form style="float: left; margin-right: 20px" action="SRVLTRetourMenuPrincipal" method="POST">
-				<button type="submit" >Retour menu principal</button>
-			</form>
-		</div>
-	
-	</fieldset>
-	
-	<fieldset>
-		<legend>Uploader de fichier</legend>
-		<form action="SRVLTInsererImage" method="POST" enctype="multipart/form-data">
-			<div style="float: left; margin-right: 20px">
-				<div>
-					<label style="float: left; margin-right: 5px;">Choisir une catégorie</label>
-					<select style="float: left; margin-right: 5px; width: 500px"  name="id_categorie">
-						<c:forEach var="item" items="${categories}">
-							<option value="${item.idCategorie}">${item.nomCategorie}</option>
-						</c:forEach>
-					</select>
-				</div>
-				
-				<div style="clear: left">
-					<label style="float: left; margin-right: 5px;">Titre</label>
-					<input type="text" name="nom_image" />
-				</div>
-				
-				<div style="clear: left">
-					<label style="float: left; margin-right: 5px;">Description</label>
-					<textarea name="desc_image"></textarea>
+		<%@include file="message.jsp" %>
+	    <%@include file="header.jsp" %>
+	    
+		<!-- Main jumbotron for content -->
+	    <div class="jumbotron" >
+			<div class="today-header">
+				<div class="today-date">Vendredi le 1er avril 2022</div>
+			</div>
+			<div class="shinyheader with-sub">
+				<div class="headercontent">
+					<ul class="headerlinks"></ul>
+					<div class="headlines">
+						<h1><i class="fa fa-plus-circle fa-3"></i> Page d'ajout d'image</h1>
+						<div class="subtitle">Vous pouvez ci-dessous rajouter une image associée à votre profil.</div>
+					</div>
 				</div>
 			</div>
-			
-			<div style="float: left">
-				<input type="file" name="file" size="1024" multiple="multiple"/>
-				<input type="submit" name="insertimage" value="Upload Fichier" />
+			<div id="inscription">
+				<div class="form">
+					<form method="POST" action="SRVLTInsererImage" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="name">Nom de l'image</label>
+							<input type="text" name="nom_image" class="form-control" id="name" placeholder="Entrez le titre de l'image" required>
+						</div>
+						<div class="form-group">
+							<label for="description">Description de l'image</label>
+							<textarea class="form-control" name="desc_image" id="description" placeholder="Décrivez votre image !" required></textarea>
+						</div>
+						<div class="form-group">
+							<label for="cat">Sélectionnez la catégorie</label>
+							<select class="form-control" id="cat" name="id_categorie" required>
+								<c:forEach var="item" items="${categories}">
+									<option value="${item.idCategorie}">${item.nomCategorie}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="file">Sélectionnez le fichier</label>
+							<input type="file" id="file" onchange="readURL(this);" name="file" multiple="multiple" required>
+						</div>
+						<div class="form-group">
+							<img style="max-width:200px;max-height:200px;box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4), 0px 0px 0px 1px rgba(0, 0, 0, 0.15);" id="blah" src="#" alt="Votre image" class="hidden"/>
+						</div>
+						<button type="submit" name="insertimage" class="btn btn-success">Uploader</button>
+					</form>
+				</div>
 			</div>
-		</form>
-	</fieldset>
+	    </div> <!-- /container -->
 	
 	</body>
-	
-	<script>
-		
-	</script>
 </html>

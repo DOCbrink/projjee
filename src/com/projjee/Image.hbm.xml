@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 janv. 2015 09:15:43 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 27 janv. 2015 08:31:45 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.projjee.Image" table="image" catalog="projjee">
         <id name="idImage" type="int">
@@ -23,11 +23,11 @@
         <property name="descriptionImage" type="string">
             <column name="DESCRIPTION_IMAGE" not-null="true" />
         </property>
-        <property name="dateMaj" type="string">
-            <column name="DATE_MAJ" length="200" not-null="true" />
+        <property name="imageDateMaj" type="string">
+            <column name="IMAGE_DATE_MAJ" length="200" not-null="false" />
         </property>
-        <property name="dateAjout" type="string">
-            <column name="DATE_AJOUT" length="200" not-null="true" />
+        <property name="imageDateAjout" type="string">
+            <column name="IMAGE_DATE_AJOUT" length="200" not-null="false" />
         </property>
     </class>
 </hibernate-mapping>

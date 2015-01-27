@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 26 janv. 2015 09:15:43 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 27 janv. 2015 08:31:45 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.projjee.User" table="user" catalog="projjee">
         <id name="idUser" type="int">
@@ -14,6 +14,24 @@
         <property name="mdpUser" type="string">
             <column name="MDP_USER" length="20" not-null="true" />
         </property>
+        <property name="userDateMaj" type="string">
+            <column name="USER_DATE_MAJ" length="100" not-null="true" />
+        </property>
+        <property name="userDateAjout" type="string">
+            <column name="USER_DATE_AJOUT" length="100" not-null="true" />
+        </property>
+        <property name="userPrenom" type="string">
+            <column name="USER_PRENOM" length="100" not-null="false" />
+        </property>
+        <property name="userNom" type="string">
+            <column name="USER_NOM" length="100" not-null="false" />
+        </property>
+        <set name="categories" table="categorie" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USER" not-null="true" />
+            </key>
+            <one-to-many class="com.projjee.Categorie" />
+        </set>
         <set name="images" table="image" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ID_USER" not-null="true" />

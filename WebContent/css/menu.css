@@ -1,3 +1,7 @@
+	body{
+		background-color:#D4DFD0;
+	}
+	/*Header navbar*/
 	nav{
 		background-color: #475C4D !important;
 	}
@@ -115,6 +119,9 @@
 		font-size: 1.8em;
 	}
 	
+	
+	/*Accueil*/
+	
 	.shinyheader {
 		background: -moz-linear-gradient(center top , #DBE4D7, #D5E0D1) repeat scroll 0% 0% transparent;
 		border-width: 1px medium;
@@ -184,4 +191,210 @@
 		font-family: Trebuchet MS,sans-serif;
 		font-size: 24px;
 		letter-spacing: -1px;
+	}
+	.jumbotron {
+		padding-top:0px;
+		padding-bottom:0px;
+		margin-bottom:0px;
+		background-color: rgb(212, 223, 208);
+	}
+
+	/*
+	.ppp{
+		padding: 0px 15px;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 1234px;
+		box-sizing: border-box;
+	}
+	.grid-layout-16 {
+		max-height: 350px;
+		overflow: hidden;
+		padding: 1px;
+	}
+	.stream {
+		text-align: left;
+	}
+	.column.double {
+		width: 240px;
+	}
+	.grid-module .grid-layout-16 .grid-thumb.square, .grid-module .grid-layout-16 .grid-thumb.square.xl, .grid-module .grid-layout-16 .grid-thumb.square.xxl {
+		float: left;
+		margin: 0px 20px 20px 0px;
+	}
+	.grid-module .grid-thumb.square.xl {
+		width: 220px;
+		height: 220px;
+	}
+	.today_module a {
+		text-decoration: none;
+	}
+	.grid-module .grid-thumb.square .overlay {
+		position: absolute;
+		background-color: #FFF;
+		height: 35px;
+		bottom: 0px;
+		padding: 12px;
+		box-sizing: border-box;
+		overflow: hidden;
+		color: #8C9A88;
+		width: 100%;
+		font-size: 10px;
+		text-align: left;
+	}
+	.grid-module .grid-thumb.square.xl .comment-stat {
+		display: block;
+	}
+	.grid-module .grid-thumb.square .overlay .icon {
+		font-size: 13px;
+		display: inline-block;
+		position: relative;
+		margin-top: -3px;
+		top: 2px;
+	}
+	.grid-module .grid-thumb.square .overlay {
+		color: #8C9A88;
+		font-size: 10px;
+		text-align: left;
+	}
+	*/
+	
+	@font-face {
+		font-family: 'Dutch'; /*a name to be used later*/
+		src: url('../fonts/BrannbollSmal.ttf'); /*URL to font*/
+	}
+	
+	/*Inscription*/
+	#visit{
+		margin-top:60px;
+	}
+	#bigbutton{
+		font-family: 'Dutch';
+		text-shadow: 0px 0px 9px rgba(130, 130, 130, 1);
+		text-align:center;
+		background-color: #6E57BF;
+		border-radius:60px;
+		padding: 43px 20px;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4), 0px 0px 0px 1px rgba(0, 0, 0, 0.15);
+	}
+	#bigbutton span{
+		color: white;
+		font-size:25px;
+	}
+	#inscription, #download{
+		margin:auto;
+		text-align:center;
+	}
+	#inscription  .form, #download .form{
+		max-width:600px;
+		margin:auto;
+		padding:20px;
+		margin-bottom:20px;
+		text-align:center;
+		background-color: #FFF;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4), 0px 0px 0px 1px rgba(0, 0, 0, 0.15);
+	}
+	#inscription form, #download form{
+		margin:auto;
+		max-width:500px;
+	}
+	.form-control:focus {
+		border-color: #5FAC75;
+		outline: 0px none;
+		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+	}
+	
+	:link, :visited {
+		color: #98AA96;
+	}
+	
+	.browse-search-container{
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+		text-shadow: 1px 1px 1px #FFF;
+		float: left;
+		margin-top: 1px;
+		background: none repeat scroll 0% 0% #FFF;
+		box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.3) inset;
+		border: 1px solid #808080;
+		height: 24px;
+		width: 300px;
+		position: relative;
+	}
+	
+	.panierlabel
+	{
+		position: relative;
+		top: -4px;
+		cursor: pointer;
+		font: 15px "Trebuchet MS",Trebuchet,sans-serif;
+		color: #0077C7;
+		text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+	}
+	
+	.dev-view-meta-content {
+		font-family: Verdana,sans-serif;
+		line-height: 1.65em !important;
+		font-size: 8.25pt !important;
+		
+	}
+	
+	.dev-view-deviation img {
+		cursor: initial !important;
+		
+	}
+	
+	.dev-view-deviation{
+		padding-top:10px !important;
+		
+	}
+	.bubbleview
+	{
+		padding-top: 0px !important;
+	}
+	.dev-page-view {
+		padding-top: 0px !important;
+	}
+	
+	.dev-view-meta-content dt{
+		font-weight: initial !important;
+	}
+	.dev-view-meta-content dd{
+		color: #000 !important;
+	}
+	
+	.dev-page-view .dev-right-bar-content {
+		width: ;
+	}
+	
+	.text-ii{
+		font-size: 9pt;
+		font-family: Verdana,sans-serif;
+		color: #000;
+	}
+	
+	.cc-time{
+		font-family: Verdana,sans-serif;
+	}
+	
+	div.catbar, body.gruze #output #group div.catbar {
+		padding: 8px 15px 0px;
+		overflow: visible;
+		min-height: 51px;
+	}
+	
+	.deletebutton{
+		height:20px;
+		width:20px;
+		position:absolute;
+		z-index:999;
+		left:20px;
+		top:-10px;
+		border : none;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4), 0px 0px 0px 1px rgba(0, 0, 0, 0.15);
+		border-radius:50px;
+		background-color:none;
+	}
+	button, a{
+		outline:none !important;
 	}
