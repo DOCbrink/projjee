@@ -1,6 +1,7 @@
 package com.projjee;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,30 +40,33 @@ public class SRVLTAfficheCategorie extends HttpServlet {
 		Session session = HibernateTools.currentSession(); 
 		   
 		ArrayList <Categorie> categList = (ArrayList)session.createQuery("from Categorie").list();
+		ArrayList <Image> imgList = (ArrayList)session.createQuery("from Image").list();
 
-		HibernateTools.closeSession();
-		
 		request.setAttribute("categories", categList);
+		request.setAttribute("images", imgList);
 		
 		RequestDispatcher req = request.getRequestDispatcher("/JSPafficheCategorie.jsp");
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Session session = HibernateTools.currentSession(); 
 		   
 		ArrayList <Categorie> categList = (ArrayList)session.createQuery("from Categorie").list();
+		ArrayList <Image> imgList = (ArrayList)session.createQuery("from Image").list();
 
-		HibernateTools.closeSession();
-		
 		request.setAttribute("categories", categList);
+		request.setAttribute("images", imgList);
 		
 		RequestDispatcher req = request.getRequestDispatcher("/JSPafficheCategorie.jsp");
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 
 	}
 

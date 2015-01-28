@@ -57,7 +57,7 @@ public class SRVLTCreerCategorie extends HttpServlet {
 			
 				if (categ.size() == 0)
 				{
-					Categorie categNew = new Categorie(newCateg);
+					Categorie categNew = new Categorie(userco, newCateg);
 					session.save(categNew);
 					request.setAttribute("status", "SUCCESS");
 					request.setAttribute("message", "Catégorie \""+newCateg+"\" ajoutée !");

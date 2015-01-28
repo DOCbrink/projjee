@@ -4,7 +4,7 @@
 <div id="navfixed" class="navbar-menu-inner-scroll hidden">
 	<div style="float:left;">
 		<a class="navbar-menu-item active" href="SRVLTLinkToAccueil">Aujourd'hui</a>
-		<a class="navbar-menu-item" href="http://www.deviantart.com/browse/all/">Parcourir</a>
+		<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
 	</div>
 	<div class="profilconnected" style="float:right;">
 		<div class="jump-to-top" style="display:inline-block;margin-right:10px;">
@@ -50,6 +50,6 @@
     </div>
 	<div id="navbottom" class="navbar-menu-inner-scroll">
 		<a class="navbar-menu-item active" href="SRVLTLinkToAccueil">Aujourd'hui</a>
-		<a class="navbar-menu-item" href="http://www.deviantart.com/browse/all/">Parcourir</a>
+		<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
 	</div>
 </nav>

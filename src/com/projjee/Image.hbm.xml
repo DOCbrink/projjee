@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 27 janv. 2015 08:31:45 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 28 janv. 2015 08:09:53 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.projjee.Image" table="image" catalog="projjee">
         <id name="idImage" type="int">
@@ -18,16 +18,34 @@
             <column name="URL_IMAGE" not-null="true" />
         </property>
         <property name="nomImage" type="string">
-            <column name="NOM_IMAGE" not-null="true" />
+            <column name="NOM_IMAGE" />
         </property>
         <property name="descriptionImage" type="string">
-            <column name="DESCRIPTION_IMAGE" not-null="true" />
+            <column name="DESCRIPTION_IMAGE" />
         </property>
         <property name="imageDateMaj" type="string">
-            <column name="IMAGE_DATE_MAJ" length="200" not-null="false" />
+            <column name="IMAGE_DATE_MAJ" length="200" />
         </property>
         <property name="imageDateAjout" type="string">
-            <column name="IMAGE_DATE_AJOUT" length="200" not-null="false" />
+            <column name="IMAGE_DATE_AJOUT" length="200" />
         </property>
+        <property name="imageNbView" type="java.lang.Integer">
+            <column name="IMAGE_NB_VIEW" />
+        </property>
+        <property name="imageNbDl" type="java.lang.Integer">
+            <column name="IMAGE_NB_DL" />
+        </property>
+        <property name="imageSize" type="java.lang.Integer">
+            <column name="IMAGE_SIZE" />
+        </property>
+        <property name="imageDimension" type="string">
+            <column name="IMAGE_DIMENSION" length="100" />
+        </property>
+        <set name="commentaires" table="commentaire" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_IMAGE" not-null="true" />
+            </key>
+            <one-to-many class="com.projjee.Commentaire" />
+        </set>
     </class>
 </hibernate-mapping>
