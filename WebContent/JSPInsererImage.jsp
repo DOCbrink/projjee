@@ -45,7 +45,7 @@
 						</div>
 						<div class="form-group">
 							<label for="file">Sélectionnez le fichier</label>
-							<input type="file" id="file" onchange="readURL(this);" name="file" multiple="multiple" required>
+							<input type="file" id="file" onchange="readURL(this);" name="file" required>
 						</div>
 						<div class="form-group">
 							<img style="max-width:200px;max-height:200px;box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4), 0px 0px 0px 1px rgba(0, 0, 0, 0.15);" id="blah" src="#" alt="Votre image" class="hidden"/>

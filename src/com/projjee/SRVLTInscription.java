@@ -35,7 +35,7 @@ public class SRVLTInscription extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-HttpSession sessionS = request.getSession();
+		HttpSession sessionS = request.getSession();
 		
 		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
 		

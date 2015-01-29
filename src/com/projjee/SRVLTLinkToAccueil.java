@@ -38,13 +38,13 @@ public class SRVLTLinkToAccueil extends HttpServlet {
 		Query q = session.createQuery("from Image Order by imageDateAjout DESC");
 		q.setMaxResults(16);
 		ArrayList<Image> imgList = (ArrayList<Image>)q.list();
-
-		HibernateTools.closeSession();
 		
 		request.setAttribute("imgList", imgList);
 		
 		RequestDispatcher req = request.getRequestDispatcher("/accueil.jsp");
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 	}
 
 	/**
@@ -60,10 +60,10 @@ public class SRVLTLinkToAccueil extends HttpServlet {
 
 		request.setAttribute("imgList", imgList);
 		
-		HibernateTools.closeSession();
-		
 		RequestDispatcher req = request.getRequestDispatcher("/accueil.jsp");
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 	
 	}
 

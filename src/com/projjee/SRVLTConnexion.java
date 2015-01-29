@@ -77,7 +77,7 @@ public class SRVLTConnexion extends HttpServlet {
 			}
 			
 		} catch (HibernateException e) {
-			System.out.println("erreur hibernate");
+			System.out.println("erreur hibernate "+e);
 			request.setAttribute("status", "FAIL");
 			request.setAttribute("message", "erreur d'hibernate ou de BDD");
 		}	
@@ -134,14 +134,14 @@ public class SRVLTConnexion extends HttpServlet {
 			}
 			
 		} catch (HibernateException e) {
-			System.out.println("erreur hibernate");
+			System.out.println("erreur hibernate"+e);
 			request.setAttribute("status", "FAIL");
 			request.setAttribute("message", "erreur d'hibernate ou de BDD");
 		}	
 		
-		HibernateTools.closeSession();
-		
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 	}
 
 }

@@ -126,7 +126,7 @@
 		background: -moz-linear-gradient(center top , #DBE4D7, #D5E0D1) repeat scroll 0% 0% transparent;
 		border-width: 1px medium;
 		border-style: solid none;
-		border-color: #ADBDAF -moz-use-text-color;
+		border-color: #ADBDAF;
 		-moz-border-top-colors: none;
 		-moz-border-right-colors: none;
 		-moz-border-bottom-colors: none;

@@ -60,4 +60,18 @@
 			</div>
 	    </div> <!-- /container -->
     </body>
+    <script>
+    	var today = document.getElementById("today");
+		today.className = ""; 
+		today.className = "navbar-menu-item";
+		var categ = document.getElementById("categ");
+		categ.className = "";
+		categ.className = "navbar-menu-item";
+		var todaynav = document.getElementById("todaynav");
+		todaynav.className = ""; 
+		todaynav.className = "navbar-menu-item";
+		var categnav = document.getElementById("categnav");
+		categnav.className = "";
+		categnav.className = "navbar-menu-item";
+	</script>	
 </html>

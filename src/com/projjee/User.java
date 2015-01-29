@@ -25,7 +25,7 @@ public class User implements java.io.Serializable {
 	private Set<Image> images = new HashSet<Image>(0);
 	private Set<Commentaire> commentaires = new HashSet<Commentaire>(0);
 	
-	private DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+	private DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	private Date today = Calendar.getInstance().getTime();        
 	private String reportDate = df.format(today);
 

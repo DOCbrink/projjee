@@ -3,8 +3,8 @@
 
 <div id="navfixed" class="navbar-menu-inner-scroll hidden">
 	<div style="float:left;">
-		<a class="navbar-menu-item active" href="SRVLTLinkToAccueil">Aujourd'hui</a>
-		<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
+		<a id="today" class="navbar-menu-item active" href="SRVLTLinkToAccueil">Aujourd'hui</a>
+		<a id="categ" class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
 	</div>
 	<div class="profilconnected" style="float:right;">
 		<div class="jump-to-top" style="display:inline-block;margin-right:10px;">
@@ -16,7 +16,7 @@
 <nav class="navbar">
 	<div id="navtop" class="container">
 		<div class="navbar-header">
-			<a class="" href="/"><img alt="JavArt" src="img/logo.png"></a>
+			<a class="" href="SRVLTLinkToAccueil"><img alt="JavArt" src="img/logo.png"></a>
 		</div>
 		<div id="navbar">
 			<c:if test="${statusLogin == 'STATUS_OK'}">
@@ -29,7 +29,7 @@
 			<c:choose>
 				<c:when test="${statusLogin == 'STATUS_OK'}">
 					<form class="profilconnected navbar-right navbar-form" method="GET" action="SRVLTDeconnexion">
-						<a style="margin-right:10px;" href="/id/"><c:out value="${userco.loginUser}"></c:out></a>
+						<a style="margin-right:10px;" href="SRVLTLinkToProfile"><c:out value="${userco.loginUser}"></c:out></a>
 						<button style="margin-top:3px" type="submit" class="btn btn-success">Déconnexion</button>
 					</form>
 				</c:when>
@@ -49,7 +49,7 @@
 		</div>
     </div>
 	<div id="navbottom" class="navbar-menu-inner-scroll">
-		<a class="navbar-menu-item active" href="SRVLTLinkToAccueil">Aujourd'hui</a>
-		<a class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
+		<a id="todaynav" class="navbar-menu-item active" href="SRVLTLinkToAccueil">Aujourd'hui</a>
+		<a id="categnav" class="navbar-menu-item" href="SRVLTAfficheCategorie">Parcourir</a>
 	</div>
 </nav>

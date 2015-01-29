@@ -1,8 +1,10 @@
 package com.projjee;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -74,8 +76,10 @@ public class SRVLTInsererImage extends HttpServlet {
 		String nomImage = "Pas de titre";
 		String descImage = "Pas de description";
 		String urlImage = "nullurl";
+		String dimensionImage = "nulldim";
 		
 		String ThefileName = "";
+		long ThefileSize = 0;
 		FileItem fi_sauv = null;
 		
 		isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -105,6 +109,7 @@ public class SRVLTInsererImage extends HttpServlet {
 					if ( !fi.isFormField () )
 					{
 						ThefileName = fi.getName();
+						ThefileSize = fi.getSize();
 						fi_sauv = fi;
 					}
 					
@@ -112,13 +117,14 @@ public class SRVLTInsererImage extends HttpServlet {
 					{
 						String fieldname = fi.getFieldName();
 				        String fieldvalue = fi.getString();
-						
+
 						if (fieldname.equals("id_categorie"))
 							idcategorie = fieldvalue;
 						else if (fieldname.equals("nom_image"))
 							nomImage = fieldvalue;
 						else if (fieldname.equals("desc_image"))
-							descImage = fieldvalue;					
+							descImage = fieldvalue;	
+						
 					}	
 				}
 				
@@ -130,15 +136,23 @@ public class SRVLTInsererImage extends HttpServlet {
 					//Si l'image n'existe pas
 					if (userstatus.equals("STATUS_OK"))
 					{
+						BufferedImage bimg;
 						//Ecriture physique 
 						if( ThefileName.lastIndexOf("\\") >= 0 ){
 							file = new File( filePath + ThefileName.substring( ThefileName.lastIndexOf("\\"))) ;
 						}else{
 							file = new File( filePath + ThefileName.substring(ThefileName.lastIndexOf("\\")+1)) ;
 						}
+						
 						urlImage = file.getName();
 						fi_sauv.write( file ) ;
 						
+						bimg = ImageIO.read(file);	
+						int width = bimg.getWidth();
+						int height = bimg.getHeight();
+						
+						dimensionImage = ""+width+"x"+height+"";
+	
 						//Ajout en BDD					
 						User user = (User)sessionS.getAttribute("userco");
 						
@@ -146,7 +160,9 @@ public class SRVLTInsererImage extends HttpServlet {
 							(Categorie)session.get("com.projjee.Categorie", Integer.parseInt(idcategorie)), 
 							urlImage, 
 							nomImage, 
-							descImage);
+							descImage,
+							ThefileSize,
+							dimensionImage);
 						
 						session.save(tempImg);
 						

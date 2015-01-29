@@ -21,7 +21,7 @@ public class Categorie implements java.io.Serializable {
 	private String categDateAjout;
 	private Set<Image> images = new HashSet<Image>(0);
 	
-	private DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+	private DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	private Date today = Calendar.getInstance().getTime();        
 	private String reportDate = df.format(today);
 

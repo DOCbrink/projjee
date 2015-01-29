@@ -1,6 +1,7 @@
 package com.projjee;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Servlet implementation class AfficheImage
@@ -31,42 +33,82 @@ public class SRVLTAfficheImage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList <Image> categImage;
+		String idImg = (String)request.getParameter("img");
 		
-		System.out.println("Id (get) de la catégorie choisis : all");
+		Session session = HibernateTools.currentSession();
+		Transaction tx = session.beginTransaction();
 		
-		Session session = HibernateTools.currentSession(); 
-
-		categImage = (ArrayList)session.createQuery("from Image").list();
+		RequestDispatcher req;
 		
-		HibernateTools.closeSession();
-		request.setAttribute("images", categImage);/**/
+		double decimal = 0;
+		DecimalFormat sizeImgDecimal = new DecimalFormat("#.00");
 		
-		RequestDispatcher req = request.getRequestDispatcher("/JSPafficheImage.jsp");
+		if (isNumeric(idImg))
+		{
+			Image img = (Image)session.load("com.projjee.Image", Integer.parseInt(idImg));
+			
+			ArrayList<Commentaire> tabCom = (ArrayList<Commentaire>)session.createQuery("From Commentaire where image.idImage="+idImg+" ORDER BY comDateAjout DESC").list();
+			
+			if (isNumeric(img.getImageNbView()+""))
+				img.setImageNbView(img.getImageNbView()+1);
+			else
+				img.setImageNbView(1);
+			
+			if (img.getImageSize() < 1024)
+				request.setAttribute("size", img.getImageSize()+"octets");
+			else if (img.getImageSize() > 1024 && img.getImageSize() < 1048576)
+			{
+				decimal = img.getImageSize()/1024;
+				request.setAttribute("size", sizeImgDecimal.format(decimal)+"Ko");
+			}
+			else if (img.getImageSize() > 1048576 && img.getImageSize() < 1073741824)
+			{
+				decimal = img.getImageSize()/1048576;
+				request.setAttribute("size", sizeImgDecimal.format(decimal)+"Mo");
+			}	
+			else if (img.getImageSize() > 1073741824)
+			{
+				decimal = img.getImageSize()/1073741824;
+				request.setAttribute("size", sizeImgDecimal.format(decimal)+"Go");
+			}	
+			
+			request.setAttribute("nbComm", img.getCommentaires().size()+"");
+			request.setAttribute("img", img);
+			request.setAttribute("com", tabCom);
+			
+			
+			req = request.getRequestDispatcher("/JSPAfficheImage.jsp");
+		}
+		
+		else
+		{
+			request.setAttribute("status", "FAIL");
+			request.setAttribute("message", "erreur load image");
+			req = request.getRequestDispatcher("/accueil.jsp");
+		}
+		
 		req.forward(request, response);
+		
+		tx.commit();
+		HibernateTools.closeSession();
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idcategorie = request.getParameter("choosenCategorie");
-		ArrayList <Image> categImage;
 		
-		System.out.println("Id (post) de la catégorie choisis : "+idcategorie);
-		
-		Session session = HibernateTools.currentSession(); 
-		
-		if (idcategorie.equals("all"))
-			categImage = (ArrayList)session.createQuery("from Image").list();
-		else
-			categImage = (ArrayList)session.createQuery("from Image where categorie.idCategorie="+idcategorie).list();
-		
-		HibernateTools.closeSession();
-		request.setAttribute("images", categImage);/**/
-		
-		RequestDispatcher req = request.getRequestDispatcher("/JSPafficheImage.jsp");
-		req.forward(request, response);
+	}
+	
+	public static boolean isNumeric(String str)  
+	{  
+		try  
+		{  
+			double d = Double.parseDouble(str);  
+		} catch(NumberFormatException nfe) {  
+			return false;  
+		}  
+		return true;  
 	}
 
 }
