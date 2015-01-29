@@ -29,7 +29,7 @@
 			<c:choose>
 				<c:when test="${statusLogin == 'STATUS_OK'}">
 					<form class="profilconnected navbar-right navbar-form" method="GET" action="SRVLTDeconnexion">
-						<a style="margin-right:10px;" href="SRVLTLinkToProfile"><c:out value="${userco.loginUser}"></c:out></a>
+						<a style="margin-right:10px;" href="SRVLTLinkToProfile?idUser=${userco.idUser}"><c:out value="${userco.loginUser}"></c:out></a>
 						<button style="margin-top:3px" type="submit" class="btn btn-success">Déconnexion</button>
 					</form>
 				</c:when>

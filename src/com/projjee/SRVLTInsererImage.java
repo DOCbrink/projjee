@@ -198,8 +198,6 @@ public class SRVLTInsererImage extends HttpServlet {
 					request.setAttribute("message", "Une image de ce nom à déjà été ajoutée");
 				}
 				
-				HibernateTools.closeSession();
-				
 			} catch(Exception ex) {
 				System.out.println(ex);
 				request.setAttribute("status", "FAIL");
@@ -211,5 +209,7 @@ public class SRVLTInsererImage extends HttpServlet {
 		
 		RequestDispatcher req = request.getRequestDispatcher("/accueil.jsp");
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 	}
 }

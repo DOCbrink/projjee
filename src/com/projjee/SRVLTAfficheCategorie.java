@@ -38,6 +38,7 @@ public class SRVLTAfficheCategorie extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Session session = HibernateTools.currentSession(); 
+		Transaction tx = session.beginTransaction();
 		   
 		ArrayList <Categorie> categList = (ArrayList)session.createQuery("from Categorie").list();
 		ArrayList <Image> imgList = (ArrayList)session.createQuery("from Image").list();
@@ -56,6 +57,7 @@ public class SRVLTAfficheCategorie extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Session session = HibernateTools.currentSession(); 
+		Transaction tx = session.beginTransaction();
 		   
 		ArrayList <Categorie> categList = (ArrayList)session.createQuery("from Categorie").list();
 		ArrayList <Image> imgList = (ArrayList)session.createQuery("from Image").list();

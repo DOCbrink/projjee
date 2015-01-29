@@ -610,7 +610,7 @@ div.stream.stream-fh-grid .details,.stream-fh-grid.results-page-thumb .details{
 .tt-fh .details{
 	display:block;
 	text-align:left;
-	margin:0 0 7px;
+	margin:10px 0 7px;
 	white-space:nowrap;
 	font-family:Verdana,sans-serif;
 	font-size:10px;
