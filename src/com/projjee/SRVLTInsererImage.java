@@ -188,7 +188,7 @@ public class SRVLTInsererImage extends HttpServlet {
 					{
 						//message de SUCCESS
 						request.setAttribute("status", "FAIL");
-						request.setAttribute("message", "Vous devez �tre connecté(e) pour ajouter une image !");
+						request.setAttribute("message", "Vous devez être connecté(e) pour ajouter une image !");
 					}
 				}
 				

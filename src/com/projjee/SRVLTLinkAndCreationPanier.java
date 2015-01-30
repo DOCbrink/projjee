@@ -80,8 +80,10 @@ public class SRVLTLinkAndCreationPanier extends HttpServlet {
 						
 						listImage.add(tempImg);
 						
-						tx.commit();
+						
 					}
+					
+					tx.commit();
 					
 					List<FileInputStream> streamImg = new ArrayList<FileInputStream>();
 			        ZipOutputStream zipArchive = new ZipOutputStream(new FileOutputStream(UPLOAD_DIRECTORY + "myImage"+sessionS.getCreationTime()+".zip"));
@@ -171,8 +173,10 @@ HttpSession sessionS = request.getSession();
 						
 						listImage.add(tempImg);
 						
-						tx.commit();
+						
 					}
+					
+					tx.commit();
 					
 					List<FileInputStream> streamImg = new ArrayList<FileInputStream>();
 			        ZipOutputStream zipArchive = new ZipOutputStream(new FileOutputStream(UPLOAD_DIRECTORY + "myImage"+sessionS.getCreationTime()+".zip"));
@@ -198,8 +202,6 @@ HttpSession sessionS = request.getSession();
 			        
 			        request.setAttribute("link", "myImage"+sessionS.getCreationTime()+".zip");
 					request.setAttribute("imgchoosen", listImage);
-					
-					
 				} catch (Exception e)
 				{
 					request.setAttribute("status", "FAIL");
