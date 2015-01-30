@@ -128,7 +128,7 @@ public class SRVLTInsererImage extends HttpServlet {
 					}	
 				}
 				
-				//Test si l'image existe déjà
+				//Test si l'image existe dï¿½jï¿½
 				ArrayList<Image> testimg = (ArrayList<Image>)session.createQuery("from Image where urlImage='"+ThefileName+"'").list();
 
 				if (testimg.size() == 0)
@@ -181,21 +181,21 @@ public class SRVLTInsererImage extends HttpServlet {
 						
 						//message de SUCCESS
 						request.setAttribute("status", "SUCCESS");
-						request.setAttribute("message", "Image Ajoutée !");
+						request.setAttribute("message", "Image Ajoutï¿½e !");
 					}	
 					
 					else
 					{
 						//message de SUCCESS
 						request.setAttribute("status", "FAIL");
-						request.setAttribute("message", "Vous devez être connecté(e) pour ajouter une image !");
+						request.setAttribute("message", "Vous devez ï¿½tre connectÃ©(e) pour ajouter une image !");
 					}
 				}
 				
 				else 
 				{
 					request.setAttribute("status", "FAIL");
-					request.setAttribute("message", "Une image de ce nom à déjà été ajoutée");
+					request.setAttribute("message", "Une image de ce nom Ã  dÃ©jÃ  Ã©tÃ© ajoutÃ©e");
 				}
 				
 			} catch(Exception ex) {

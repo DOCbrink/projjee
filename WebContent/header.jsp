@@ -19,17 +19,18 @@
 			<a class="" href="SRVLTLinkToAccueil"><img alt="JavArt" src="img/logo.png"></a>
 		</div>
 		<div id="navbar">
-			<c:if test="${statusLogin == 'STATUS_OK'}">
-				<div class="navbar-left navbar-text">
+			<div class="navbar-left navbar-text">
+				<c:if test="${statusLogin == 'STATUS_OK'}">
 					<span id="submit"><a href="SRVLTLinkToUploadImage" class="navbar-link">Ajouter une image</a></span>
-					<span id="shopping"><a href="#" class="navbar-link"><i class="fa fa-shopping-cart"></i>Panier</a></span>
-				</div>
-			</c:if>
+				</c:if>
+				<span id="shopping"><a href="SRVLTLinkAndCreationPanier" class="navbar-link"><i class="fa fa-shopping-cart"></i>Panier</a></span>
+			</div>
+			
 			
 			<c:choose>
 				<c:when test="${statusLogin == 'STATUS_OK'}">
 					<form class="profilconnected navbar-right navbar-form" method="GET" action="SRVLTDeconnexion">
-						<a style="margin-right:10px;" href="SRVLTLinkToProfile?idUser=${userco.idUser}"><c:out value="${userco.loginUser}"></c:out></a>
+						<a style="margin-right:10px;" href="SRVLTLinkToRealProfil"><c:out value="${userco.loginUser}"></c:out></a>
 						<button style="margin-top:3px" type="submit" class="btn btn-success">Déconnexion</button>
 					</form>
 				</c:when>

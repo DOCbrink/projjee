@@ -60,14 +60,14 @@ public class SRVLTCreerCategorie extends HttpServlet {
 					Categorie categNew = new Categorie(userco, newCateg);
 					session.save(categNew);
 					request.setAttribute("status", "SUCCESS");
-					request.setAttribute("message", "Catégorie \""+newCateg+"\" ajoutée !");
+					request.setAttribute("message", "CatÃ©gorie \""+newCateg+"\" ajoutÃ©e !");
 					tx.commit();
 				}
 				
 				else
 				{
 					request.setAttribute("status", "FAIL");
-					request.setAttribute("message", "Catégorie déjà existante !");
+					request.setAttribute("message", "CatÃ©gorie dÃ©jÃ  existante !");
 				}
 				
 			} catch (HibernateException e) {
@@ -80,7 +80,7 @@ public class SRVLTCreerCategorie extends HttpServlet {
 		else
 		{
 			request.setAttribute("status", "FAIL");
-			request.setAttribute("message", "Vous devez être connecté(e) pour ajouter une catégorie.");
+			request.setAttribute("message", "Vous devez Ãªtre connectÃ©(e) pour ajouter une catÃ©gorie.");
 		}
 		
 		HibernateTools.closeSession();

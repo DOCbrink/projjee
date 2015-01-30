@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 janv. 2015 08:09:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.projjee.Commentaire" table="commentaire" catalog="projjee">
+        <id name="idCommentaire" type="int">
+            <column name="ID_COMMENTAIRE" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="image" class="com.projjee.Image" fetch="select">
+            <column name="ID_IMAGE" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.projjee.User" fetch="select">
+            <column name="ID_USER" not-null="true" />
+        </many-to-one>
+        <property name="commentaire" type="string">
+            <column name="COMMENTAIRE" length="65535" not-null="true" />
+        </property>
+        <property name="comDateMaj" type="string">
+            <column name="COM_DATE_MAJ" length="100" />
+        </property>
+        <property name="comDateAjout" type="string">
+            <column name="COM_DATE_AJOUT" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

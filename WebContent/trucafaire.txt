@@ -1,0 +1,3 @@
+- Faire de sorte à ce que la date soit à jour
+- Faire de sorte que quand on clique sur un onglet; l'onglet actif soit en surbrillance
+- 

@@ -34,12 +34,13 @@ public class SRVLTDeconnexion extends HttpServlet {
 		try {
 			sessionS.removeAttribute("statusLogin");
 			sessionS.removeAttribute("userco");
+			sessionS.removeAttribute("panier");
 			
 			request.setAttribute("status", "SUCCESS");
-			request.setAttribute("message", "Déconnecté(e)");
+			request.setAttribute("message", "DÃ©connectÃ©(e)");
 		} catch (Exception ex) {
 			request.setAttribute("status", "FAIL");
-			request.setAttribute("message", "La deconnexion à échoué. Contactez un admin.");
+			request.setAttribute("message", "La deconnexion Ã  Ã©chouÃ©e. Contactez un admin.");
 		}
 		
 		RequestDispatcher rqd = request.getRequestDispatcher("/index.jsp");
@@ -57,10 +58,10 @@ public class SRVLTDeconnexion extends HttpServlet {
 			sessionS.removeAttribute("userco");
 			
 			request.setAttribute("status", "SUCCESS");
-			request.setAttribute("message", "Déconnecté(e)");
+			request.setAttribute("message", "DÃ©connectÃ©(e)");
 		} catch (Exception ex) {
 			request.setAttribute("status", "FAIL");
-			request.setAttribute("message", "La deconnexion à échoué. Contactez un admin.");
+			request.setAttribute("message", "La deconnexion Ã  Ã©chouÃ©e. Contactez un admin.");
 		}
 		
 		RequestDispatcher rqd = request.getRequestDispatcher("/index.jsp");

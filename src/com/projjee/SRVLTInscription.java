@@ -59,7 +59,7 @@ public class SRVLTInscription extends HttpServlet {
 				User newUser = new User(login, pwd);
 				session.save(newUser);
 				request.setAttribute("status", "SUCCESS");
-				request.setAttribute("message", "Vous êtes maintenant inscrit ! Bonne viste =)");
+				request.setAttribute("message", "Vous Ãªtes maintenant inscrit ! Bonne viste =)");
 				tx.commit();
 				
 				sessionS.setAttribute("statusLogin", "STATUS_OK");
@@ -71,7 +71,7 @@ public class SRVLTInscription extends HttpServlet {
 			else
 			{
 				request.setAttribute("status", "FAIL");
-				request.setAttribute("message", "Utilisateur déjà existant");
+				request.setAttribute("message", "Utilisateur dÃ©jÃ  existant");
 			}
 			
 		} catch (HibernateException e) {
@@ -113,7 +113,7 @@ public class SRVLTInscription extends HttpServlet {
 				User newUser = new User(login, pwd);
 				session.save(newUser);
 				request.setAttribute("status", "SUCCESS");
-				request.setAttribute("message", "Vous êtes maintenant inscrit ! Bonne viste =)");
+				request.setAttribute("message", "Vous ï¿½tes maintenant inscrit ! Bonne viste =)");
 				tx.commit();
 				
 				sessionS.setAttribute("statusLogin", "STATUS_OK");
@@ -125,7 +125,7 @@ public class SRVLTInscription extends HttpServlet {
 			else
 			{
 				request.setAttribute("status", "FAIL");
-				request.setAttribute("message", "Utilisateur déjà existant");
+				request.setAttribute("message", "Utilisateur dï¿½jï¿½ existant");
 			}
 			
 		} catch (HibernateException e) {

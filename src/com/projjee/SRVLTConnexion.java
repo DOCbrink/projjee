@@ -37,7 +37,7 @@ public class SRVLTConnexion extends HttpServlet {
 		String login = request.getParameter("login");
 		String pwd = request.getParameter("pwd");
 		
-		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");;
+		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
 		
 		HttpSession sessionS = request.getSession();
 		
@@ -65,7 +65,7 @@ public class SRVLTConnexion extends HttpServlet {
 				sessionS.setAttribute("statusLogin", "STATUS_OK");
 				sessionS.setAttribute( "userco", userco.get(0));
 				request.setAttribute("status", "SUCCESS");
-				request.setAttribute("message", "Connecté(e) en tant que "+login);
+				request.setAttribute("message", "ConnectÃ©(e) en tant que "+login);
 				req = request.getRequestDispatcher("/accueil.jsp");
 			}
 			
@@ -82,9 +82,9 @@ public class SRVLTConnexion extends HttpServlet {
 			request.setAttribute("message", "erreur d'hibernate ou de BDD");
 		}	
 		
-		HibernateTools.closeSession();
-		
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class SRVLTConnexion extends HttpServlet {
 		String login = request.getParameter("login");
 		String pwd = request.getParameter("pwd");
 		
-		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");;
+		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
 		
 		HttpSession sessionS = request.getSession();
 		
@@ -122,7 +122,7 @@ public class SRVLTConnexion extends HttpServlet {
 				sessionS.setAttribute("statusLogin", "STATUS_OK");
 				sessionS.setAttribute( "userco", userco.get(0));
 				request.setAttribute("status", "SUCCESS");
-				request.setAttribute("message", "Connecté(e) en tant que "+login);
+				request.setAttribute("message", "ConnectÃ©(e) en tant que "+login);
 				req = request.getRequestDispatcher("/accueil.jsp");
 			}
 			
