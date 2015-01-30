@@ -181,7 +181,7 @@ public class SRVLTInsererImage extends HttpServlet {
 						
 						//message de SUCCESS
 						request.setAttribute("status", "SUCCESS");
-						request.setAttribute("message", "Image Ajout�e !");
+						request.setAttribute("message", "Image Ajoutée !");
 					}	
 					
 					else

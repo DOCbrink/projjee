@@ -14,16 +14,16 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
- * Servlet implementation class SRVLTProfilMajUneCategorie
+ * Servlet implementation class SRVLTProfilSupprComs
  */
-@WebServlet("/SRVLTProfilMajUneCategorie")
-public class SRVLTProfilMajUneCategorie extends HttpServlet {
+@WebServlet("/SRVLTProfilSupprComs")
+public class SRVLTProfilSupprComs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SRVLTProfilMajUneCategorie() {
+    public SRVLTProfilSupprComs() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,46 +46,40 @@ public class SRVLTProfilMajUneCategorie extends HttpServlet {
 		
 		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
 		
-		String idCateg = request.getParameter("idCateg");
-		String nomCateg = request.getParameter("nomCateg");
+		String idComs = request.getParameter("idComs");
 		
 		if (sessionS.getAttribute("statusLogin") != null && sessionS.getAttribute("userco") != null)
 		{
 			if (sessionS.getAttribute("statusLogin") == "STATUS_OK")
-			{				
+			{
+				Commentaire curCom = (Commentaire)session.load("com.projjee.Commentaire", Integer.parseInt(idComs));
+				
 				User user = (User)sessionS.getAttribute("userco");
 				int idUser = user.getIdUser();
 				
 				//pour rendre persistant
 				user = (User)session.load("com.projjee.User", idUser);
 				
-				if (isNumeric(idCateg))
-				{
-					Categorie curCateg = (Categorie)session.load("com.projjee.Categorie", Integer.parseInt(idCateg));
-					
-					if (!nomCateg.isEmpty())
-						curCateg.setNomCategorie(nomCateg);
-				}
+				session.delete(curCom);
 				
 				tx.commit();
 				
 				req = request.getRequestDispatcher("/JSPProfile.jsp");
 				request.setAttribute("parametre", "profil");
 				request.setAttribute("userInfo", user);
-				
 			}
 			
 			else
 			{
 				request.setAttribute("status", "FAIL");
-				request.setAttribute("message", "Vous devez �tre connecté(e) pour acceder à cette partie du site.");
+				request.setAttribute("message", "Vous devez �tre connect�(e) pour acceder � cette partie du site.");
 			}
 		}
 		
 		else
 		{
 			request.setAttribute("status", "FAIL");
-			request.setAttribute("message", "Vous devez être connecté(e) pour acceder à cette partie du site.");
+			request.setAttribute("message", "Vous devez �tre connect�(e) pour acceder � cette partie du site.");
 		}
 		
 		req.forward(request, response);		

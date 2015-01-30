@@ -14,16 +14,16 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
- * Servlet implementation class SRVLTProfilMajUneCategorie
+ * Servlet implementation class SRVLTProfilMajUnCommentaire
  */
-@WebServlet("/SRVLTProfilMajUneCategorie")
-public class SRVLTProfilMajUneCategorie extends HttpServlet {
+@WebServlet("/SRVLTProfilMajUnCommentaire")
+public class SRVLTProfilMajUnCommentaire extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SRVLTProfilMajUneCategorie() {
+    public SRVLTProfilMajUnCommentaire() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,25 +46,25 @@ public class SRVLTProfilMajUneCategorie extends HttpServlet {
 		
 		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
 		
-		String idCateg = request.getParameter("idCateg");
-		String nomCateg = request.getParameter("nomCateg");
+		String idComs = request.getParameter("idComs");
+		String newCom = request.getParameter("newCom");
 		
 		if (sessionS.getAttribute("statusLogin") != null && sessionS.getAttribute("userco") != null)
 		{
 			if (sessionS.getAttribute("statusLogin") == "STATUS_OK")
-			{				
+			{			
 				User user = (User)sessionS.getAttribute("userco");
 				int idUser = user.getIdUser();
 				
 				//pour rendre persistant
 				user = (User)session.load("com.projjee.User", idUser);
 				
-				if (isNumeric(idCateg))
+				if (isNumeric(idComs))
 				{
-					Categorie curCateg = (Categorie)session.load("com.projjee.Categorie", Integer.parseInt(idCateg));
+					Commentaire curCom = (Commentaire)session.load("com.projjee.Commentaire", Integer.parseInt(idComs));
 					
-					if (!nomCateg.isEmpty())
-						curCateg.setNomCategorie(nomCateg);
+					if (!newCom.isEmpty())
+						curCom.setCommentaire(newCom);
 				}
 				
 				tx.commit();

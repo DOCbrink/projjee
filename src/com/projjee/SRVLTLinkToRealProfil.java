@@ -95,6 +95,24 @@ public class SRVLTLinkToRealProfil extends HttpServlet {
 					}					
 				}
 				
+				else if (parametre.equals("CommentairesModif"))
+				{
+					if (isNumeric(request.getParameter("comModif")))
+					{
+						Commentaire coms = (Commentaire)session.load("com.projjee.Commentaire", Integer.parseInt(request.getParameter("comModif")));
+						
+						request.setAttribute("coms", coms);
+						parametre2 = "commentairesModif";
+					}
+					
+					else
+					{
+						request.setAttribute("status", "FAIL");
+						request.setAttribute("message", "ne joue pas avec l'url !");
+						req = request.getRequestDispatcher("/index.jsp");
+					}					
+				}
+				
 				else
 				{
 					parametre2 = request.getParameter("parametre");

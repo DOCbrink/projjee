@@ -3,6 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
 
+<c:if test="${fn:length(userInfo.images) == 0}">
+	<p>Vous n'avez pas encore ajouté d'images !</p>
+</c:if>
+
 <div class="row">
 	<c:forEach var="item" items="${userInfo.images}">
 		<div class="col-md-3">

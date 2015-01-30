@@ -1,6 +1,7 @@
 package com.projjee;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +15,16 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
- * Servlet implementation class SRVLTProfilMajUneCategorie
+ * Servlet implementation class SRVLTProfilAjoutUneCategorie
  */
-@WebServlet("/SRVLTProfilMajUneCategorie")
-public class SRVLTProfilMajUneCategorie extends HttpServlet {
+@WebServlet("/SRVLTProfilAjoutUneCategorie")
+public class SRVLTProfilAjoutUneCategorie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SRVLTProfilMajUneCategorie() {
+    public SRVLTProfilAjoutUneCategorie() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,8 +47,7 @@ public class SRVLTProfilMajUneCategorie extends HttpServlet {
 		
 		RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
 		
-		String idCateg = request.getParameter("idCateg");
-		String nomCateg = request.getParameter("nomCateg");
+		String newCateg = request.getParameter("newCateg");
 		
 		if (sessionS.getAttribute("statusLogin") != null && sessionS.getAttribute("userco") != null)
 		{
@@ -59,12 +59,12 @@ public class SRVLTProfilMajUneCategorie extends HttpServlet {
 				//pour rendre persistant
 				user = (User)session.load("com.projjee.User", idUser);
 				
-				if (isNumeric(idCateg))
+				ArrayList <Categorie> categTest = (ArrayList<Categorie>)session.createQuery("from Categorie where nomCategorie='"+newCateg+"'").list();
+				
+				if (!newCateg.isEmpty() && categTest.size()==0)
 				{
-					Categorie curCateg = (Categorie)session.load("com.projjee.Categorie", Integer.parseInt(idCateg));
-					
-					if (!nomCateg.isEmpty())
-						curCateg.setNomCategorie(nomCateg);
+					Categorie newCatego = new Categorie(user, newCateg);
+					session.save(newCatego);
 				}
 				
 				tx.commit();
@@ -78,7 +78,7 @@ public class SRVLTProfilMajUneCategorie extends HttpServlet {
 			else
 			{
 				request.setAttribute("status", "FAIL");
-				request.setAttribute("message", "Vous devez �tre connecté(e) pour acceder à cette partie du site.");
+				request.setAttribute("message", "Vous devez être connecté(e) pour acceder à cette partie du site.");
 			}
 		}
 		
@@ -103,5 +103,4 @@ public class SRVLTProfilMajUneCategorie extends HttpServlet {
 		}  
 		return true;  
 	}
-
 }

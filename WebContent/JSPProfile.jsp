@@ -38,16 +38,6 @@
 			<div class="browse-container match-body-height newbrowse">
 				<div id="browse-sidemenu" class="browse-left-bar ">
 					<div style="" class="browse-left-bar-inner">
-						<div class="browse-facet browse-facet-search">
-							<div class="noncollapseHeader">Rechercher</div>
-							<form id="browse-search-box" class="" method="get" action="SRVLTAfficheImageParTrie">
-								<div id="browse-search-ctrl">
-									<div class="browse-search-container">
-										<input style="position: static; width: 100%; height: 100%; font-size: 12px;" class="browse-search-input" id="searchInput" name="categ" type="text">
-									</div>
-								</div>
-							</form>
-						</div>
 						<div class="browse-facet browse-facet-order">
 							<div class="noncollapseHeader">Option</div>
 							<ul>
@@ -64,14 +54,19 @@
 									<a href="SRVLTLinkToRealProfil?parametre=commentaires" class="">Mes commentaires</a>
 								</li>
 							</ul>
+							
+							<div class="noncollapseHeader" style="margin-top: 20px;">Action</div>
+							<ul>
+								<li class="">
+									<a href="SRVLTLinkToRealProfil?parametre=categorieAjout">Crée une catégorie</a>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
 				
 				<div class="browse-content with-sidemenu" style="margin-top:10px;">
-					<div class="container">
-						<c:out value="${parametre}"></c:out>
-						
+					<div class="container">					
 						<c:if test="${parametre == 'profil'}">
 							<%@include file="JSP-Profil-Options.jsp" %> 
 						</c:if>
@@ -98,6 +93,10 @@
 						
 						<c:if test="${parametre == 'commentairesModif'}">
 							<%@include file="JSP-Profil-Modif-Commentaires.jsp" %>
+						</c:if>
+						
+						<c:if test="${parametre == 'categorieAjout'}">
+							<%@include file="JSP-Profil-Ajout-Categorie.jsp" %>
 						</c:if>
 					</div>
 				</div>

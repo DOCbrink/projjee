@@ -80,9 +80,9 @@ public class SRVLTInscription extends HttpServlet {
 			request.setAttribute("message", "erreur d'hibernate ou de BDD");
 		}	
 		
-		HibernateTools.closeSession();
-		
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class SRVLTInscription extends HttpServlet {
 				User newUser = new User(login, pwd);
 				session.save(newUser);
 				request.setAttribute("status", "SUCCESS");
-				request.setAttribute("message", "Vous �tes maintenant inscrit ! Bonne viste =)");
+				request.setAttribute("message", "Vous êtes maintenant inscrit ! Bonne viste =)");
 				tx.commit();
 				
 				sessionS.setAttribute("statusLogin", "STATUS_OK");
@@ -125,7 +125,7 @@ public class SRVLTInscription extends HttpServlet {
 			else
 			{
 				request.setAttribute("status", "FAIL");
-				request.setAttribute("message", "Utilisateur d�j� existant");
+				request.setAttribute("message", "Utilisateur déjà existant");
 			}
 			
 		} catch (HibernateException e) {
@@ -134,9 +134,9 @@ public class SRVLTInscription extends HttpServlet {
 			request.setAttribute("message", "erreur d'hibernate ou de BDD");
 		}	
 		
-		HibernateTools.closeSession();
-		
 		req.forward(request, response);
+		
+		HibernateTools.closeSession();
 	}
 
 }
